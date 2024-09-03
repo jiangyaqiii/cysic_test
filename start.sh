@@ -71,18 +71,18 @@ wget https://gitee.com/XinRunServer/aleo_-cysic/raw/master/cysic-aleo-prover-v0.
 tar -xf cysic-aleo-prover-v0.1.18.tgz 
 cd cysic-aleo-prover-v0.1.18
 
-# 获取用户的奖励领取地址
-read -p "请输入您的奖励领取地址 (Aleo 地址,没有的话进入 https://www.provable.tools/account 创建): " CLAIM_REWARD_ADDRESS
+# # 获取用户的奖励领取地址
+# read -p "请输入您的奖励领取地址 (Aleo 地址,没有的话进入 https://www.provable.tools/account 创建): " CLAIM_REWARD_ADDRESS
     
-# 获取用户的 IP 地址
-read -p "请输入代理服务器的IP地址和端口 (例如: 192.168.1.100:9000): " PROVER_IP
+# # 获取用户的 IP 地址
+# read -p "请输入代理服务器的IP地址和端口 (例如: 192.168.1.100:9000): " PROVER_IP
 
 # 创建启动脚本
 cat <<EOF > start_prover.sh
 #!/bin/bash
 cd $CYSIC_PROVER_PATH/cysic-aleo-prover-v0.1.18
 export LD_LIBRARY_PATH=./:\$LD_LIBRARY_PATH
-./cysic-aleo-prover -l ./prover.log -a $PROVER_IP -w $CLAIM_REWARD_ADDRESS.$(curl -s ifconfig.me) -tls=true -p asia.aleopool.cysic.xyz:16699
+./cysic-aleo-prover -l ./prover.log -a 0.0.0.0:9000 -w $CLAIM_REWARD_ADDRESS.$(curl -s ifconfig.me) -tls=true -p asia.aleopool.cysic.xyz:16699
 EOF
 
 chmod +x start_prover.sh
