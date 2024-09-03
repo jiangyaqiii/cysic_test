@@ -80,7 +80,7 @@ read -p "请输入代理服务器的IP地址和端口 (例如: 192.168.1.100:900
 # 创建启动脚本
 cat <<EOF > start_prover.sh
 #!/bin/bash
-cd $CYSIC_PROVER_PATH/cysic-aleo-prover-v0.1.17
+cd $CYSIC_PROVER_PATH/cysic-aleo-prover-v0.1.18
 export LD_LIBRARY_PATH=./:\$LD_LIBRARY_PATH
 ./cysic-aleo-prover -l ./prover.log -a $PROVER_IP -w $CLAIM_REWARD_ADDRESS.$(curl -s ifconfig.me) -tls=true -p asia.aleopool.cysic.xyz:16699
 EOF
